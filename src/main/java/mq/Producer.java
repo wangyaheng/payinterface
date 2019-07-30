@@ -17,7 +17,7 @@ import com.lefu.astrotrain.client.producer.DefaultATProducer;
 import com.lefu.commons.utils.lang.JsonUtils;
 
 /**
- * asdfsadgsdfgsdfhasdasd
+ * asdfsadgsdfgsdfhasdasdasdfasdf
  */
 public class Producer {
 
