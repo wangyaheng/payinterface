@@ -20,16 +20,16 @@ public class Tests3 {
     public static void main(String[] args) {
         ArrayList<String> ts = new ArrayList<>();
 
-        ts.add("b");
+        /*ts.add("b");
         ts.add("d");
         ts.add("c");
         ts.add("a");
         ts.add("g");
-        Collections.sort(ts,(s1,s2)->s1.compareTo(s2));
+        Collections.sort(ts,(s1,s2)->s1.compareTo(s2));*/
     	/*Date date = new Date(1556176060954l);
-    	System.out.println(date);
+    	System.out.println(date);*/
     	
-        doHandle("C:\\Users\\hasee\\Desktop\\ʧ�ܴ�ȷ��.txt","C:\\Users\\hasee\\Desktop\\1.txt","customer_no");*/
+        doHandle("C:\\Users\\hasee\\Desktop\\失败待确认.txt","C:\\Users\\hasee\\Desktop\\1.txt","customer_no");
     }
     
     public static void doHandle(String fileName,String newFileName,String field) {

@@ -1,5 +1,12 @@
 package mq;
 
+import com.lefu.astrotrain.client.ATMessage;
+import com.lefu.astrotrain.client.ATProducer;
+import com.lefu.astrotrain.client.message.ObjectMessage;
+import com.lefu.astrotrain.client.message.StringMessage;
+import com.lefu.astrotrain.client.producer.DefaultATProducer;
+import com.lefu.commons.utils.lang.JsonUtils;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -8,13 +15,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.Deflater;
-
-import com.lefu.astrotrain.client.ATMessage;
-import com.lefu.astrotrain.client.ATProducer;
-import com.lefu.astrotrain.client.message.ObjectMessage;
-import com.lefu.astrotrain.client.message.StringMessage;
-import com.lefu.astrotrain.client.producer.DefaultATProducer;
-import com.lefu.commons.utils.lang.JsonUtils;
 
 /**
  * asdfsadgsdfgsdfhasdasdasdfasdf
@@ -34,7 +34,7 @@ public class Producer {
 			defaultATProducer.setGroupName("payinterface-interactiveprocess");
 			defaultATProducer.setInstanceName("ProducerAT");
 
-			defaultATProducer.setNamesrvAddr("10.10.128.43:9876");//
+			defaultATProducer.setNamesrvAddr("10.10.129.43:9876");//
 			//defaultATProducer.setNamesrvAddr("10.10.111.43:9876");
 
 		 /*defaultATProducer.setGroupName("reverse-core");
@@ -44,10 +44,10 @@ public class Producer {
 			defaultATProducer.start();
 			//ATProducer atProducer=defaultATProducer.createProducer("reverseInterfaceRequestQueue");
 			//ATProducer atProducer=defaultATProducer.createProducer("extOrderService");
-			ATProducer atProducer=defaultATProducer.createProducer("mdsettle-channel_settle_remit");
-			//ATProducer atProducer=defaultATProducer.createProducer("REMIT_INTERATIVE_THEME");
+			//ATProducer atProducer=defaultATProducer.createProducer("mdsettle-channel_settle_remit");
+			ATProducer atProducer=defaultATProducer.createProducer("REMIT_INTERATIVE_THEME");
 			ObjectMessage msg = new ObjectMessage();
-			//for(int i = 0;i<10;i++) {
+			for(int i = 0;i<30;i++) {
 			String batchCode="B"+System.currentTimeMillis();
 
 
@@ -65,7 +65,9 @@ public class Producer {
 			//
 			//
 			// MerId\":null}]}";
-			String dataJson = "{\"interfaceInfoCode\":\"REMIT_GWF_100001\",\"batchCode\":\""+batchCode+"\",\"totalNumber\":1,\"totalAmount\":100,\"interfaceRemitBills\":[{\"class\":\".InterfaceRemitBill\",\"billCode\":\"RB"+batchCode+"\",\"requestSeriaNum\":\"R"+batchCode+"\",\"ownerRole\":\"CUSTOMER\",\"ownerID\":\"36301920522 \",\"product\":\"D0YISHI\",\"accountName\":\"张三\",\"accountNo\":\"225621040002911\",\"bankCode\":\"BOC\",\"bankName\":\"中国银行\",\"amount\":100,\"fee\":0.0,\"use\":\"XX打款\",\"memo\":\"\",\"province\":\"湖南\",\"city\":\"长沙市\",\"cnapsCode\":\"103100000026\",\"sabkCode\":\"103100000026\",\"ownBankCode\":\"\",\"institNo\":null,\"clearanceTime\":null,\"idCode\":\"41272319920124731X\",\"clearingMerchantCode\":null,\"billType\":null,\"clearingMerchantName\":null,\"settleType\":null,\"acctType\":null,\"transDate\":1534728040000,\"attachFee\":0,\"oriRefNo\":\"000000447074\",\"channelMerId\":\"822100058120231\",\"orderNo\":\"BL8TWRLWJ105GTPD4UKG\"}]}";
+			String dataJson = "{\"interfaceInfoCode\":\"REMIT_YD_100002\",\"batchCode\":\""+batchCode+"\",\"totalNumber\":1,\"totalAmount\":0.01,\"interfaceRemitBills\":[{\"class\":\".InterfaceRemitBill\",\"billCode\":\"RB"+batchCode+"\",\"requestSeriaNum\":\"R"+batchCode+"\",\"ownerRole\":\"CUSTOMER\",\"ownerID\":\"36301920522 \",\"product\":\"D0YISHI\",\"accountName\":\"张三\",\"accountNo\":\"6245660789010762123\",\"bankCode\":\"BOC\",\"bankName\":\"中国银行\",\"amount\":0.01,\"fee\":0.0,\"use\":\"XX打款\",\"memo\":\"\",\"province\":\"湖南\",\"city\":\"长沙市\",\"cnapsCode\":\"103100000026\",\"sabkCode\":\"103100000026\",\"ownBankCode\":\"\",\"institNo\":null,\"clearanceTime\":null,\"idCode\":\"120108198408080123\",\"clearingMerchantCode\":null,\"billType\":null,\"clearingMerchantName\":null,\"settleType\":null,\"acctType\":null,\"transDate\":1534728040000,\"attachFee\":0,\"oriRefNo\":\"000000447074\",\"channelMerId\":\"10027950865\",\"orderNo\":\"BL8TWRLWJ105GTPD4UKG\",\"phoneNo\":\"13833333333\"}]}";
+			//String dataJson = "{\"interfaceInfoCode\":\"REMIT_GWF_100002\",\"batchCode\":\""+batchCode+"\",\"totalNumber\":1,\"totalAmount\":1,\"interfaceRemitBills\":[{\"class\":\".InterfaceRemitBill\",\"billCode\":\"RB"+batchCode+"\",\"requestSeriaNum\":\"R"+batchCode+"\",\"ownerRole\":\"CUSTOMER\",\"ownerID\":\"36301920522 \",\"product\":\"D0YISHI\",\"accountName\":\"张三\",\"accountNo\":\"225621040002911\",\"bankCode\":\"BOC\",\"bankName\":\"中国银行\",\"amount\":1,\"fee\":0.0,\"use\":\"XX打款\",\"memo\":\"\",\"province\":\"湖南\",\"city\":\"长沙市\",\"cnapsCode\":\"103100000026\",\"sabkCode\":\"103100000026\",\"ownBankCode\":\"\",\"institNo\":null,\"clearanceTime\":null,\"idCode\":\"41272319920124731X\",\"clearingMerchantCode\":null,\"billType\":null,\"clearingMerchantName\":null,\"settleType\":null,\"acctType\":null,\"transDate\":1534728040000,\"attachFee\":0,\"oriRefNo\":\"000000447074\",\"channelMerId\":\"10027950865\",\"orderNo\":\"BL8TWRLWJ105GTPD4UKG\"}]}";
+			//String dataJson = "{\"interfaceInfoCode\":\"REMIT_GWF_100002\",\"batchCode\":\""+batchCode+"\",\"totalNumber\":1,\"totalAmount\":0.19,\"interfaceRemitBills\":[{\"class\":\".InterfaceRemitBill\",\"billCode\":\"B201908220051\",\"requestSeriaNum\":\"-RBD0029517187\",\"ownerRole\":\"CUSTOMER\",\"ownerID\":\"8619183510\",\"product\":\"LFB_MDSMYIBAOX58500401\",\"accountName\":\"卢棉棉\",\"accountNo\":\"6226192300338050\",\"bankCode\":\"CMBC\",\"bankName\":\"中国民生银行股份有限公司泉州石狮支行\",\"amount\":0.19,\"fee\":0.0,\"use\":\"结算款\",\"memo\":\"\",\"province\":\"福建\",\"city\":\"泉州市\",\"cnapsCode\":\"305397823084\",\"sabkCode\":\"305100000013\",\"ownBankCode\":\"\",\"institNo\":null,\"clearanceTime\":null,\"idCode\":null,\"clearingMerchantCode\":null,\"billType\":null,\"clearingMerchantName\":null,\"settleType\":null,\"acctType\":null,\"transDate\":1566454271000,\"attachFee\":0.0,\"oriRefNo\":\"79BMF33XQ00L\",\"channelMerId\":null,\"terminalNo\":null,\"bankRequestNo\":null,\"orderNo\":\"BMF33XLH4E47JM0R331G\",\"channelCost\":0.0}],\"preRemitRecordBean\":null}";
 			byte[] data = compress(dataJson.getBytes("UTF-8"));
 			msg.putObject(data);
 			msg.setProperty(ATMessage.MSG_KEYS,batchCode);
@@ -88,7 +90,7 @@ public class Producer {
 
 
 			System.out.println(dataJson);
-			//}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

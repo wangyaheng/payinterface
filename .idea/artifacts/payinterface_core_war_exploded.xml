@@ -36,6 +36,8 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.6" />
           <element id="library" level="project" name="Maven: com.cedarsoftware:java-util:1.9.0" />
           <element id="library" level="project" name="Maven: com.cedarsoftware:json-io:2.5.1" />
+          <element id="library" level="project" name="Maven: com.lmax:disruptor:3.2.0" />
+          <element id="library" level="project" name="Maven: io.netty:netty-all:4.1.26.Final" />
         </element>
       </element>
       <element id="directory" name="META-INF">
