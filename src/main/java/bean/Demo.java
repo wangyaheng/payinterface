@@ -84,11 +84,11 @@ public static void main(String[] args) {
 
 	@Test
 	public void testDemo(){
-		String batchCode = "RB123456";
+		/*String batchCode = "RB123456";
 		String dataJson="{\"class\":\".RemitTradeContext\",\"interfaceInfoCode\":\"REMIT_PRIVATE_CMB_430000\",\"batchCode\":\"rB789456123\",\"totalNumber\":1,\"totalAmount\":12924.1,\"interfaceRemitBills\":[{\"class\":\".InterfaceRemitBill\",\"billCode\":\"RB0071397154\",\"requestSeriaNum\":\"R"+batchCode+"\",\"ownerRole\":\"CUSTOMER\",\"ownerID\":\"8611300496\",\"product\":\"P_SETTLE_LFB_SSFMD\",\"accountName\":\"姣曟湞鍗嶾\",\"accountNo\":\"6212262402007639640\",\"bankCode\":\"ICBC\",\"bankName\":\"涓浗宸ュ晢閾惰鑲′唤鏈夐檺鍏徃璐靛畨鏀\",\"amount\":12924.1,\"fee\":0.0,\"use\":\"涔愬瘜鎵撴\",\"memo\":\"\",\"province\":\"璐靛窞\",\"city\":\"璐甸槼甯俓\",\"cnapsCode\":\"102701000842\",\"sabkCode\":\"102100099996\",\"ownBankCode\":\"\"}]}";
 		JSONObject jo = new JSONObject();
 		jo.parse(dataJson);
-		System.out.println(System.currentTimeMillis());
+		System.out.println(System.currentTimeMillis());*/
 	}
 //38746987  38763489 38784030
 

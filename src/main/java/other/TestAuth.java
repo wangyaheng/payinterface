@@ -53,12 +53,12 @@ public  static  void  main(String[]  args)  throws  Exception  {
 			String card = row.getCell(2).getStringCellValue();
 			*/
 			//  
-			String name = "ÍõÑÇ15";
+			String name = "123";
 			String cert= "41272319920124731X";
-			String card= "6227002433080972106";
+			String card= null;
 			 String  reutrnResult  =  "";
 
-			 //  Æ´×°²ÎÊý
+
 			 Map<String,  String>  paramMap  =  new  HashMap<String,  String>();
 			 paramMap.put("apiCode",  "directPay");
 			 paramMap.put("versionCode",  "1.0");
@@ -66,13 +66,13 @@ public  static  void  main(String[]  args)  throws  Exception  {
 			 paramMap.put("signType",  "MD5");
 			 //paramMap.put("notifyURL","notifyURL=http://192.168.101.60:8080/agent/customerAuthNotify.action");  //  
 			 paramMap.put("notifyURL","http://www.baidu.com/");
-			 //paramMap.put("partner",  "86101961874");//  ¿¨ÓÑÉú²ú
-			 paramMap.put("partner",  "8614271579");  //  ¿¨ÓÑ²âÊÔ
-			 // paramMap.put("partner",  "86101162845");  //  ¿¨ÓÑ²âÊÔ
+			 //paramMap.put("partner",  "86101961874");//  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			 paramMap.put("partner",  "8614271579");  //  ï¿½ï¿½ï¿½Ñ²ï¿½ï¿½ï¿½
+			 // paramMap.put("partner",  "86101162845");  //  ï¿½ï¿½ï¿½Ñ²ï¿½ï¿½ï¿½
 			// paramMap.put("partner",  "8627193115");//  
 			 paramMap.put("requestCode",  "RQJHF3"  +  System.currentTimeMillis());
-			 //paramMap.put("busiType",  "BINDCARD_AUTH");//°ó¿¨ÈÏÖ¤
-			 paramMap.put("busiType",  "IDENTITY_AUTH");//  Éí·ÝÈÏÖ¤
+			 //paramMap.put("busiType",  "BINDCARD_AUTH");//ï¿½ï¿½ï¿½ï¿½Ö¤
+			 paramMap.put("busiType",  "IDENTITY_AUTH");//  ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
 			 paramMap.put("payerName",name);
 			 paramMap.put("bankCardNo",card);
 			 paramMap.put("certNo",cert);
@@ -84,7 +84,7 @@ public  static  void  main(String[]  args)  throws  Exception  {
 			 ArrayList<String>  paramNames  =  new  ArrayList<>(paramMap.keySet());
 			 Collections.sort(paramNames);
 			
-			 //  ÅÅÐò
+			 //  ï¿½ï¿½ï¿½ï¿½
 			 StringBuilder  signSource  =  new  StringBuilder();
 			 Iterator<String>  iterator  =  paramNames.iterator();
 			 String  payerName  = name;
@@ -95,7 +95,7 @@ public  static  void  main(String[]  args)  throws  Exception  {
 			 if  (iterator.hasNext())  signSource.append("&");
 			 }
 			 }
-			 //  Ç©Ãû
+			 //  Ç©ï¿½ï¿½
 			 String  calSign  =  null;
 			 //signSource.append("4AF07A08A1EDA969FF414AD6C8A1292F");//
 			 //signSource.append("8709BA92BEA2072A060F5DA1F9E5E667");//
@@ -115,9 +115,9 @@ public  static  void  main(String[]  args)  throws  Exception  {
 
 			 // auth-url
 			 // String url = "http://127.0.0.1:7075/auth-core/hessian/authConfigHessianService";
-			String url = "http://10.10.129.49:8083/auth-front/auth/trade.htm";//¿¨ÓÑ²âÊÔ
+			String url = "http://10.10.129.49:8083/auth-front/auth/trade.htm";//ï¿½ï¿½ï¿½Ñ²ï¿½ï¿½ï¿½
 			 //String url = "http://116.213.198.30/auth-front/auth/trade.htm";
-			 //String url = "https://jh.cardinfo.com.cn/auth-front/auth/trade.htm";//¿¨ÓÑÉú²ú
+			 //String url = "https://jh.cardinfo.com.cn/auth-front/auth/trade.htm";//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			 try {
 			 //reutrnResult = HttpClientUtils.send(Method.POST, url, paramMap, true, "UTF-8");
 			 //reutrnResult = HttpClientUtils.send(Method.POST, url, paramMap, true, "UTF-8", 30000);
@@ -129,7 +129,7 @@ public  static  void  main(String[]  args)  throws  Exception  {
 			  FileWriter fw = new FileWriter("C://Users//hasee//Desktop//5.txt", true);
 	            BufferedWriter bw = new BufferedWriter(fw);
 	            bw.append(name+"   "+card+"   "+cert+ "   "+json2Bean.getResponseMsg());
-	            bw.write("\r\n ");// ÍùÒÑÓÐµÄÎÄ¼þÉÏÌí¼Ó×Ö·û´®
+	            bw.write("\r\n ");// ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 	           
 	            bw.close();
 	            fw.close();
@@ -164,7 +164,7 @@ public static String doPost(String url,Map<String,String> map,String charset){
         	httpClient = new SSLClient(); 
         	httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 100000);
             httpPost = new HttpPost(url);  
-            //²ÎÊý
+            //ï¿½ï¿½ï¿½ï¿½
             List<NameValuePair> list = new ArrayList<NameValuePair>();  
             Iterator iterator = map.entrySet().iterator();  
             while(iterator.hasNext()){  

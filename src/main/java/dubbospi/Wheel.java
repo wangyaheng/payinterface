@@ -6,6 +6,6 @@ import org.apache.dubbo.common.extension.SPI;
 
 @SPI
 public interface Wheel {
-    @Adaptive("wheel")
+    @Adaptive
     void getWheel(URL url);
 }

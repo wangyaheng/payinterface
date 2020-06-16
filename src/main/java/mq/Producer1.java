@@ -37,8 +37,8 @@ public class Producer1 {
 		defaultATProducer.start();
 		//ATProducer atProducer=defaultATProducer.createProducer("reverseInterfaceRequestQueue");
 		//ATProducer atProducer=defaultATProducer.createProducer("extOrderService");
-		//ATProducer atProducer=defaultATProducer.createProducer("CUST_POS_RELATION_TOPIC");
-		ATProducer atProducer=defaultATProducer.createProducer("lynx_order_act_succeed_order");
+		ATProducer atProducer=defaultATProducer.createProducer("CUST_POS_RELATION_TOPIC");
+		//ATProducer atProducer=defaultATProducer.createProducer("lynx_order_act_succeed_order");
 		
 		//ATProducer atProducer=defaultATProducer.createProducer("REMIT_INTERATIVE_THEME");
 		StringMessage msg = new StringMessage();
@@ -49,8 +49,8 @@ public class Producer1 {
 			//String dataJson="{\"class\":\".RemitTradeContext\",\"interfaceInfoCode\":\"REMIT_CMBC_731001\",\"batchCode\":\""+batchCode+"\",\"totalNumber\":1,\"totalAmount\":0.01,\"interfaceRemitBills\":[{\"class\":\".InterfaceRemitBill\",\"billCode\":\"RB007139715644\",\"requestSeriaNum\":\"R"+batchCode+"\",\"ownerRole\":\"CUSTOMER\",\"ownerID\":\"8611300496\",\"product\":\"P_SETTLE_LFB_SSFMD\",\"accountName\":\"姣曟湞鍗嶾",\"accountNo\":\"6212262402007639640\",\"bankCode\":\"ICBC\",\"bankName\":\"涓浗宸ュ晢閾惰鑲′唤鏈夐檺鍏徃璐靛畨鏀\",\"amount\":0.01,\"fee\":0.0,\"use\":\"涔愬瘜鎵撴\",\"memo\":\"\",\"province\":\"璐靛窞\",\"city\":\"璐甸槼甯俓",\"cnapsCode\":\"102701000842\",\"sabkCode\":\"102100099996\",\"ownBankCode\":\"\"}]}";
 			//8621506659
 			//String data="{\"posSn\":\"6682017031625902\",\"activityCode\":\"KY_YOUSHUA_20181001_MPOS\",\"bindType\":\"BIND\",\"customerNo\":\"86301076522\",\"posType\":\"G2S-SR\",\"operationTime\":1515554162990,\"posCati\":\"92878130\"}";       
-			//String data="{\"posSn\":\"6682017031952833\",\"activityCode\":\"HDBH-20180302174408\",\"bindType\":\"BIND\",\"customerNo\":\"86301293522\",\"posType\":\"G2S-SR\",\"operationTime\":1515554162990,\"posCati\":\"92878130\",\"agentNo\":\"123456\",\"brandCode\":\"X58500401\"}";
-			String data="{\"activityAmount\":98.0,\"orderNo\":\"BKCNWVXALGJ1RLA09GD0\",\"channelActivityCode\":\"ACTERM\",\"completeTime\":1557753726000,\"transAmount\":115.0,\"activityCode\":\"HDBH-201901181113\",\"createTime\":1557753719000,\"actOutBusCode\":\"BK74LF2AL595430AQ2H0\",\"activityStatus\":\"SUCCESS\",\"bankExternalId\":\"000050408039\",\"interfaceCode\":\"P310013\",\"activityType\":\"ACT_MAC_FEE\",\"customerNo\":\"86251908515\"}";
+			String data="{\"posSn\":\"CA102849\",\"activityCode\":\"HDBH-201911110001-HK-DPOS\",\"bindType\":\"BIND\",\"customerNo\":\"86301886527\",\"posType\":\"G2S-SR\",\"operationTime\":1515554162990,\"posCati\":\"92878130\",\"agentNo\":\"123456\",\"brandCode\":\"X11000601\"}";
+			//String data="{\"activityAmount\":98.0,\"orderNo\":\"BKCNWVXALGJ1RLA09GD0\",\"channelActivityCode\":\"ACTERM\",\"completeTime\":1557753726000,\"transAmount\":115.0,\"activityCode\":\"HDBH-201901181113\",\"createTime\":1557753719000,\"actOutBusCode\":\"BP6BFVVD2LFPSJV89150\",\"activityStatus\":\"SUCCESS\",\"bankExternalId\":\"000050408039\",\"interfaceCode\":\"P310013\",\"activityType\":\"ACT_MAC_FEE\",\"customerNo\":\"86251908515\"}";
 			
 			//byte[] data = compress(dataJson.getBytes("UTF-8"));
 			msg.setMsg(data);

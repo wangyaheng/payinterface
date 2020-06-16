@@ -31,13 +31,8 @@ import com.lefu.commons.utils.lang.JsonUtils;
 
 
 /**
- * RSAUtils - ¶ÔRSA Ç©Ãû&ÑéÇ©/·Ö¶Î¼ÓÃÜ&·Ö¶Î½âÃÜ µÄ°ü×°
- * Ç©ÃûËã·¨: "SHA1withRSA", Ë½Ô¿½øÐÐÇ©Ãû; ¹«Ô¿½øÐÐÑéÇ©.
- * ¼ÓÃÜËã·¨: "RSA/ECB/PKCS1Padding", ¹«Ô¿½øÐÐ¼ÓÃÜ; Ë½Ô¿½øÐÐ½âÃÜ.
- * [PrivKey]ÊÇ×Ô¼ºµÄË½Ô¿, ×Ô¼ºµÄ¹«Ô¿¸øÍ¨ÐÅ¶Ô·½.
- * [PubKey]ÊÇ¶Ô·½µÄ¹«Ô¿, ¶Ô·½µÄË½Ô¿ÔÚ¶Ô·½ÄÇ±ß.
- * ÎªÁË·½±ã, ÕâÀï¼Ù¶¨Ë«·½µÄÃÜÔ¿³¤¶ÈÒ»ÖÂ, Ç©ÃûºÍ¼ÓÃÜµÄ¹æÔòÒ²Ò»ÖÂ.
- * ÒÔ`Base64Str`½áÎ²µÄ²ÎÊý±íÊ¾ÄÚÈÝÊÇBase64±àÂëµÄ×Ö·û´®, ÆäËûÇé¿ö¶¼ÊÇraw×Ö·û´®.
+
+ * ï¿½ï¿½`Base64Str`ï¿½ï¿½Î²ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Base64ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½rawï¿½Ö·ï¿½ï¿½ï¿½.
  * @author sangechen
  */
 public class RSAUtils {
@@ -45,7 +40,7 @@ public class RSAUtils {
 
 	public static final String KEY_ALGORITHM = "RSA";
 	public static final String SIGNATURE_ALGORITHM = "SHA1withRSA";
-	public static final String CIPHER_ALGORITHM = "RSA/ECB/PKCS1Padding"; // ¼ÓÃÜblockÐèÒªÔ¤Áô11×Ö½Ú
+	public static final String CIPHER_ALGORITHM = "RSA/ECB/PKCS1Padding"; // ï¿½ï¿½ï¿½ï¿½blockï¿½ï¿½ÒªÔ¤ï¿½ï¿½11ï¿½Ö½ï¿½
 	public static final int KEYBIT = 2048;
 	public static final int RESERVEBYTES = 11;
 	private static KeyFactory keyFactory;
@@ -65,60 +60,60 @@ public class RSAUtils {
 			decryptBlock = KEYBIT / 8; // 256 bytes
 			encryptBlock = decryptBlock - RESERVEBYTES; // 245 bytes
 		} catch (Exception e) {
-			logger.error("³õÊ¼»¯¼ÓÃÜÊý¾ÝÊ§°Ü");
+			logger.error("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
 		}
 	}
 
 	/**
-	 * Ç©Ãû
-	 * @param plaintext ÒªÇ©ÃûµÄ×Ö·û´®
+	 * Ç©ï¿½ï¿½
+	 * @param plaintext ÒªÇ©ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 	 * @param privateKey Ë½Ô¿
-	 * @return ·µ»ØÇ©ÃûºóµÄ½á¹û
-	 * @throws UnsupportedEncodingException Òì³£
+	 * @return ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½
+	 * @throws UnsupportedEncodingException ï¿½ì³£
 	 */
 	public static String sign(String plaintext) throws UnsupportedEncodingException {
 		String signBase64Str = "";
 		try {
 
-			// ÔØÈëÃØÔ¿
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿
 			signature.initSign(localPrivKey);
 			signature.update(plaintext.getBytes("GBK"));
-			// base64±àÂë
+			// base64ï¿½ï¿½ï¿½ï¿½
 			signBase64Str = Base64.encodeBase64String(signature.sign());
 		} catch (Exception e) {
-			logger.error("Ç©ÃûÒì³£", e);
+			logger.error("Ç©ï¿½ï¿½ï¿½ì³£", e);
 		}
 		return signBase64Str;
 	}
 
 	/**
-	 * ÑéÇ©
-	 * @param plaintext ÑéÇ©µÄ×Ö·û´®
-	 * @param signBase64StrÑéÇ©µÄÇ©Ãû
-	 * @param publicKey ¹«Ô¿
-	 * @return ÑéÖ¤³É¹¦»òÊ§°Ü
-	 * @throws UnsupportedEncodingException Òì³£
+	 * ï¿½ï¿½Ç©
+	 * @param plaintext ï¿½ï¿½Ç©ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+	 * @param signBase64Strï¿½ï¿½Ç©ï¿½ï¿½Ç©ï¿½ï¿½
+	 * @param publicKey ï¿½ï¿½Ô¿
+	 * @return ï¿½ï¿½Ö¤ï¿½É¹ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+	 * @throws UnsupportedEncodingException ï¿½ì³£
 	 */
 	public static boolean verify(String plaintext, String signBase64Str) throws UnsupportedEncodingException {
 		boolean isValid = false;
 		try {
-			// ÔØÈë¹«Ô¿
+			// ï¿½ï¿½ï¿½ë¹«Ô¿
 			signature.initVerify(peerPubKey);
 			signature.update(plaintext.getBytes("GBK"));
-			// Ö´ÐÐÑéÇ©º¯Êý¼°base64½âÂë
+			// Ö´ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½base64ï¿½ï¿½ï¿½ï¿½
 			isValid = signature.verify(Base64.decodeBase64(signBase64Str));
 		} catch (Exception e) {
-			logger.error("ÑéÇ©Òì³£", e);
+			logger.error("ï¿½ï¿½Ç©ï¿½ì³£", e);
 		}
 		return isValid;
 	}
 
 	/**
-	 * ¼ÓÃÜ
-	 * @param str_data ¼ÓÃÜ×Ö·û´®
-	 * @param publicKey ¹«Ô¿
-	 * @return ¼ÓÃÜºóµÄÃÜÎÄ
-	 * @throws UnsupportedEncodingExceptionÒì³£
+	 * ï¿½ï¿½ï¿½ï¿½
+	 * @param str_data ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+	 * @param publicKey ï¿½ï¿½Ô¿
+	 * @return ï¿½ï¿½ï¿½Üºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @throws UnsupportedEncodingExceptionï¿½ì³£
 	 */
 	public static String encrypt(String str_data) throws Exception {
 		try {
@@ -127,69 +122,69 @@ public class RSAUtils {
 			zos.write(str_data.getBytes("GBK"));
 			zos.close();
 			byte[] data = bos.toByteArray();
-			// ¼ÆËã·Ö¶Î¼ÓÃÜµÄblockÊý (ÏòÉÏÈ¡Õû)
+			// ï¿½ï¿½ï¿½ï¿½Ö¶Î¼ï¿½ï¿½Üµï¿½blockï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½)
 			int nBlock = (data.length / encryptBlock);
-			if ((data.length % encryptBlock) != 0) // ÓàÊý·Ç0blockÊýÔÙ¼Ó1
+			if ((data.length % encryptBlock) != 0) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0blockï¿½ï¿½ï¿½Ù¼ï¿½1
 			{
 				nBlock += 1;
 			}
-			// Êä³öbuffer, ´óÐ¡ÎªnBlock¸ödecryptBlock
+			// ï¿½ï¿½ï¿½buffer, ï¿½ï¿½Ð¡ÎªnBlockï¿½ï¿½decryptBlock
 			ByteArrayOutputStream outbuf = new ByteArrayOutputStream(nBlock * decryptBlock);
 			Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
 			cipher.init(Cipher.ENCRYPT_MODE, peerPubKey);
-			// ·Ö¶Î¼ÓÃÜ
+			// ï¿½Ö¶Î¼ï¿½ï¿½ï¿½
 			for (int offset = 0; offset < data.length; offset += encryptBlock) {
-				// block´óÐ¡: encryptBlock »ò Ê£Óà×Ö½ÚÊý
+				// blockï¿½ï¿½Ð¡: encryptBlock ï¿½ï¿½ Ê£ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
 				int inputLen = (data.length - offset);
 				if (inputLen > encryptBlock) {
 					inputLen = encryptBlock;
 				}
-				// µÃµ½·Ö¶Î¼ÓÃÜ½á¹û
+				// ï¿½Ãµï¿½ï¿½Ö¶Î¼ï¿½ï¿½Ü½ï¿½ï¿½
 				byte[] encryptedBlock = cipher.doFinal(data, offset, inputLen);
-				// ×·¼Ó½á¹ûµ½Êä³öbufferÖÐ
+				// ×·ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bufferï¿½ï¿½
 				outbuf.write(encryptedBlock);
 			}
 			return Base64.encodeBase64String(outbuf.toByteArray()); // ciphertext
 		} catch (Exception e) {
-			logger.error("¼ÓÃÜÒì³£", e);
+			logger.error("ï¿½ï¿½ï¿½ï¿½ï¿½ì³£", e);
 			throw new Exception(e);
 		}
 
 	}
 
 	/**
-	 * ½âÃÜ
-	 * @param cryptedBase64Str ½âÃÜÃÜÎÄ
+	 * ï¿½ï¿½ï¿½ï¿½
+	 * @param cryptedBase64Str ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param localPrivKey Ë½Ô¿
 	 * @return
 	 * @throws Exception
 	 */
 	public static String decrypt(String cryptedBase64Str) throws Exception {
-		// ×ª»»µÃµ½×Ö½ÚÁ÷
+		// ×ªï¿½ï¿½ï¿½Ãµï¿½ï¿½Ö½ï¿½ï¿½ï¿½
 		byte[] data = Base64.decodeBase64(cryptedBase64Str);
-		// ¼ÆËã·Ö¶Î½âÃÜµÄblockÊý (ÀíÂÛÉÏÓ¦¸ÃÄÜÕû³ý)
+		// ï¿½ï¿½ï¿½ï¿½Ö¶Î½ï¿½ï¿½Üµï¿½blockï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 		int nBlock = (data.length / decryptBlock);
-		// Êä³öbuffer, , ´óÐ¡ÎªnBlock¸öencryptBlock
+		// ï¿½ï¿½ï¿½buffer, , ï¿½ï¿½Ð¡ÎªnBlockï¿½ï¿½encryptBlock
 		ByteArrayOutputStream outbuf = new ByteArrayOutputStream(nBlock * encryptBlock);
 		try {
 			Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
 			cipher.init(Cipher.DECRYPT_MODE, localPrivKey);
-			// ·Ö¶Î½âÃÜ
+			// ï¿½Ö¶Î½ï¿½ï¿½ï¿½
 			for (int offset = 0; offset < data.length; offset += decryptBlock) {
-				// block´óÐ¡: decryptBlock »ò Ê£Óà×Ö½ÚÊý
+				// blockï¿½ï¿½Ð¡: decryptBlock ï¿½ï¿½ Ê£ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
 				int inputLen = (data.length - offset);
 				if (inputLen > decryptBlock) {
 					inputLen = decryptBlock;
 				}
-				// µÃµ½·Ö¶Î½âÃÜ½á¹û
+				// ï¿½Ãµï¿½ï¿½Ö¶Î½ï¿½ï¿½Ü½ï¿½ï¿½
 				byte[] decryptedBlock = cipher.doFinal(data, offset, inputLen);
-				// ×·¼Ó½á¹ûµ½Êä³öbufferÖÐ
+				// ×·ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bufferï¿½ï¿½
 				outbuf.write(decryptedBlock);
 			}
-			outbuf.flush();// ---Ð´Íê³Éºó£¬ÐèÒªË¢ÐÂ»º³åÇø£¬²¢ÇÒ¹Ø±Õ»º³å
+			outbuf.flush();// ---Ð´ï¿½ï¿½Éºï¿½ï¿½ï¿½ÒªË¢ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¹Ø±Õ»ï¿½ï¿½ï¿½
 			outbuf.close();
 		} catch (Exception e) {
-			logger.error("½âÃÜÒì³£", e);
+			logger.error("ï¿½ï¿½ï¿½ï¿½ï¿½ì³£", e);
 			throw new Exception(e);
 		}
 
@@ -200,7 +195,7 @@ public class RSAUtils {
 			zos.close();
 			return new String(bos.toByteArray(), "GBK");
 		} catch (IOException e) {
-			logger.error("½âÃÜÒì³£", e);
+			logger.error("ï¿½ï¿½ï¿½ï¿½ï¿½ì³£", e);
 
 		}
 		return null;
@@ -229,27 +224,27 @@ public class RSAUtils {
 	}
 
 	/**
-	 * ³õÊ¼»¯×Ô¼ºµÄË½Ô¿
-	 * `openssl genrsa -out rsa_2048.key 2048` #Ö¸¶¨Éú³ÉµÄÃÜÔ¿µÄÎ»Êý: 2048
-	 * `openssl pkcs8 -topk8 -inform PEM -in rsa_2048.key -outform PEM -nocrypt -out pkcs8.txt` #for Java ×ª»»³ÉPKCS#8±àÂë
-	 * `openssl rsa -in rsa_2048.key -pubout -out rsa_2048_pub.key` #µ¼³öpubkey
-	 * @param privKeyPath Ë½Ô¿Â·¾¶
-	 * @param pubKeyPath ¹«Ô¿Â·¾¶
-	 * @param keysize ÃÜÔ¿³¤¶È, Ä¬ÈÏ2048
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Ë½Ô¿
+	 * `openssl genrsa -out rsa_2048.key 2048` #Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½Ô¿ï¿½ï¿½Î»ï¿½ï¿½: 2048
+	 * `openssl pkcs8 -topk8 -inform PEM -in rsa_2048.key -outform PEM -nocrypt -out pkcs8.txt` #for Java ×ªï¿½ï¿½ï¿½ï¿½PKCS#8ï¿½ï¿½ï¿½ï¿½
+	 * `openssl rsa -in rsa_2048.key -pubout -out rsa_2048_pub.key` #ï¿½ï¿½ï¿½ï¿½pubkey
+	 * @param privKeyPath Ë½Ô¿Â·ï¿½ï¿½
+	 * @param pubKeyPath ï¿½ï¿½Ô¿Â·ï¿½ï¿½
+	 * @param keysize ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½, Ä¬ï¿½ï¿½2048
 	 */
 	public static void initKey(String privKeyPath, String pubKeyPath) {
 
 		if (localPrivKey == null || peerPubKey == null) {
 			logger.info("privKeyPath,{} privKeyPath,{}", privKeyPath, pubKeyPath);
-			// ¶ÁÈ¡Ë½Ô¿
+			// ï¿½ï¿½È¡Ë½Ô¿
 			localPrivKey = initPrivateKey(privKeyPath);
-			// ¶ÁÈ¡¹«Ô¿
+			// ï¿½ï¿½È¡ï¿½ï¿½Ô¿
 			peerPubKey = initPublicKey(pubKeyPath);
 		}
 	}
 
 	/**
-	 * ¶ÁÈ¡Ë½Ô¿
+	 * ï¿½ï¿½È¡Ë½Ô¿
 	 */
 	private static PrivateKey initPrivateKey(String privKeyPath) {
 		try {
@@ -268,14 +263,14 @@ public class RSAUtils {
 
 			return kf.generatePrivate(keySpec);
 		} catch (Exception e) {
-			logger.error("³õÊ¼»¯Ë½Ô¿Òì³£", e);
+			logger.error("ï¿½ï¿½Ê¼ï¿½ï¿½Ë½Ô¿ï¿½ì³£", e);
 
 		}
 		return null;
 	}
 
 	/**
-	 * ¶ÁÈ¡¹«Ô¿
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ô¿
 	 */
 	private static PublicKey initPublicKey(String pubKeyPath) {
 		try {
@@ -293,7 +288,7 @@ public class RSAUtils {
 			X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keybyte);
 			return kf.generatePublic(keySpec);
 		} catch (Exception e) {
-			logger.error("³õÊ¼»¯¹«Ô¿Òì³£", e);
+			logger.error("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ì³£", e);
 		}
 		return null;
 	}

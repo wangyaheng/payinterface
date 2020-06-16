@@ -1,4 +1,5 @@
 package bean;
+import java.math.BigDecimal;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,9 +8,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import entity.FeeFrozenRecord;
 import org.junit.Test;
 
 public class Demo2 {
+
+	public static void main(String[] args) {
+		FeeFrozenRecord feeFrozenRecord = new FeeFrozenRecord();
+
+
+	}
 
 	/**
 	 * @param args1463642480674

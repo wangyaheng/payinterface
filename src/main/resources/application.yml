@@ -1,0 +1,31 @@
+
+spring:
+  datasource:
+    username: promotionfee
+    password: haoshikisses
+    url: jdbc:mysql://10.10.111.14:3306/promotionfee?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+      name: payinterface
+  cloud:
+      sentinel:
+        transport:
+          port: 8719
+          dashboard: localhost:8080
+
+
+
+mybatis:
+  mapper-locations: classpath:dao/*Mapper.xml
+  type-aliases-package: entity
+nacos:
+  config:
+    server-addr: 134.175.237.28:8848
+server:
+  port: 8081
+
+
+
+
+
+

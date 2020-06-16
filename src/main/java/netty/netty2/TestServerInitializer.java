@@ -27,8 +27,8 @@ public class TestServerInitializer extends ChannelInitializer<SocketChannel> {
          */
 
         //ChannelInboundHandlerAdapter
-       // LengthFieldBasedFrameDecoder(单个包最大长度，数据长度字节段开始的偏移量，数据长度字段所需要的字节数，，从整个包第一个字节开始向后忽略的字节数)
-       pipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,0,2,0,2));
+        // LengthFieldBasedFrameDecoder(单个包最大长度，数据长度字节段开始的偏移量，数据长度字段所需要的字节数，，从整个包第一个字节开始向后忽略的字节数)
+        pipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,0,2,0,2));
         //ChannelOutboundHandlerAdapter
         pipeline.addLast(new LengthFieldPrepender(4)); //计算当前待发送消息的二进制字节长度，将该长度添加到ByteBuf的缓冲区头中
         pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8)); //ChannelInboundHandlerAdapter

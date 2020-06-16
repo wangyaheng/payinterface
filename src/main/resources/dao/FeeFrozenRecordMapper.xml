@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="spring.dao.FeeFrozenRecordMapper" >
+    <resultMap id="BaseResultMap" type="entity.FeeFrozenRecord" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="frozen_record_code" property="frozenRecordCode" jdbcType="VARCHAR" />
+        <result column="consumer_no" property="consumerNo" jdbcType="VARCHAR" />
+        <result column="promotion_code" property="promotionCode" jdbcType="VARCHAR" />
+        <result column="terminal_code" property="terminalCode" jdbcType="VARCHAR" />
+        <result column="frozen_start_time" property="frozenStartTime" jdbcType="TIMESTAMP" />
+        <result column="frozen_complete_time" property="frozenCompleteTime" jdbcType="TIMESTAMP" />
+        <result column="customer_end_time" property="customerEndTime" jdbcType="TIMESTAMP" />
+        <result column="plan_frozen_amount" property="planFrozenAmount" jdbcType="DECIMAL" />
+        <result column="frozen_amount" property="frozenAmount" jdbcType="DECIMAL" />
+        <result column="record_status" property="recordStatus" jdbcType="CHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+        <result column="frozen_serial_no" property="frozenSerialNo" jdbcType="VARCHAR" />
+        <result column="version" property="version" jdbcType="INTEGER" />
+        <result column="priority" property="priority" jdbcType="INTEGER" />
+        <result column="fee_no" property="feeNo" jdbcType="VARCHAR" />
+        <result column="agent_no" property="agentNo" jdbcType="VARCHAR" />
+        <result column="first_agent_no" property="firstAgentNo" jdbcType="VARCHAR" />
+        <result column="brand_code" property="brandCode" jdbcType="VARCHAR" />
+        <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+        <result column="bank_external_id" property="bankExternalId" jdbcType="VARCHAR" />
+
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, frozen_record_code, consumer_no, promotion_code, terminal_code, frozen_start_time,
+        frozen_complete_time,customer_end_time, plan_frozen_amount, frozen_amount,  record_status,
+        create_time, edit_time, frozen_serial_no, version, priority, fee_no,agent_no,first_agent_no,brand_code,order_no,bank_external_id
+    </sql>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select <include refid="Base_Column_List"/>
+        from fee_frozen_record
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <insert id="insert" parameterType="entity.FeeFrozenRecord" >
+        insert into fee_frozen_record (id, frozen_record_code, consumer_no,
+        promotion_code, terminal_code, frozen_start_time,
+        frozen_complete_time,customer_end_time, plan_frozen_amount,
+        frozen_amount, record_status,
+        create_time, edit_time, frozen_serial_no,
+        version, priority, fee_no,agent_no,first_agent_no,brand_code
+        )
+        values (#{id,jdbcType=VARCHAR}, #{frozenRecordCode,jdbcType=VARCHAR}, #{consumerNo,jdbcType=VARCHAR},
+        #{promotionCode,jdbcType=VARCHAR}, #{terminalCode,jdbcType=VARCHAR}, #{frozenStartTime,jdbcType=TIMESTAMP},
+        #{frozenCompleteTime,jdbcType=TIMESTAMP},#{customerEndTime,jdbcType=TIMESTAMP}, #{planFrozenAmount,jdbcType=DECIMAL},
+        #{frozenAmount,jdbcType=DECIMAL}, #{recordStatus,jdbcType=CHAR},
+        #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}, #{frozenSerialNo,jdbcType=VARCHAR},
+        #{version,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, #{feeNo,jdbcType=VARCHAR}, #{agentNo,jdbcType=VARCHAR}, #{firstAgentNo,jdbcType=VARCHAR}
+        , #{brandCode,jdbcType=VARCHAR}
+        )
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="entity.FeeFrozenRecord" >
+        update fee_frozen_record
+        set frozen_record_code = #{frozenRecordCode,jdbcType=VARCHAR},
+        consumer_no = #{consumerNo,jdbcType=VARCHAR},
+        promotion_code = #{promotionCode,jdbcType=VARCHAR},
+        terminal_code = #{terminalCode,jdbcType=VARCHAR},
+        frozen_start_time = #{frozenStartTime,jdbcType=TIMESTAMP},
+        frozen_complete_time = #{frozenCompleteTime,jdbcType=TIMESTAMP},
+        customer_end_time = #{customerEndTime,jdbcType=TIMESTAMP},
+        plan_frozen_amount = #{planFrozenAmount,jdbcType=DECIMAL},
+        frozen_amount = #{frozenAmount,jdbcType=DECIMAL},
+        record_status = #{recordStatus,jdbcType=CHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+        frozen_serial_no = #{frozenSerialNo,jdbcType=VARCHAR},
+        version = #{version,jdbcType=INTEGER},
+        priority = #{priority,jdbcType=INTEGER},
+        fee_no = #{feeNo,jdbcType=VARCHAR},
+        agent_no = #{agentNo,jdbcType=VARCHAR},
+        first_agent_no = #{firstAgentNo,jdbcType=VARCHAR},
+        brand_code = #{brandCode,jdbcType=VARCHAR},
+        order_no=#{orderNo},
+        bank_external_id=#{bankExternalId}
+
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>

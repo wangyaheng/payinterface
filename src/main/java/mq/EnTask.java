@@ -4,9 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CyclicBarrier;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.lefu.commons.utils.lang.JsonUtils;
 
 class EnTask implements Runnable{
+
+
 	CyclicBarrier cyclicBarrier;
 	public  EnTask(CyclicBarrier cyclicBarrier) {
 		this.cyclicBarrier = cyclicBarrier;
