@@ -16,7 +16,7 @@
         <version>2.1.6.RELEASE</version>
     </parent>
     <properties>
-        <lunece.version>4.10.2</lunece.version>
+        <lunece.version>8.5.1</lunece.version>
     </properties>
     <dependencies>
         <dependency>
